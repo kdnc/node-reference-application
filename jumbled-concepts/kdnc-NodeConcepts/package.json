@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "My app description",
   "scripts": {
-    "start": "node server.js",
+    "start": "set DEBUG=app & node server.js",
     "test": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
     "compression": "^1.7.2",
+    "debug": "^3.1.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-flash": "^0.0.2",

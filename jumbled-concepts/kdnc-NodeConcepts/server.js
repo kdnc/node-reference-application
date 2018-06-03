@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var dotenv = require('dotenv');
 // var mongoose = require('mongoose');
+var chalk = require('chalk');
+var debug = require('debug')('app');
+var morgan = require('morgan');
 
 // Load environment variables from .env file
 dotenv.load();
@@ -28,6 +31,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('port', process.env.PORT || 3001);
+app.use(morgan('tiny'));
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -51,7 +55,7 @@ if (app.get('env') === 'production') {
 }
 
 app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
+  debug(`Express server listening on port ${chalk.green(app.get('port'))}`);
 });
 
 module.exports = app;
